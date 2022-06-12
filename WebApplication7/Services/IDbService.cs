@@ -11,7 +11,7 @@ namespace WebApplication7.Services
         Task<IEnumerable<SomeKindOfDoctors>> GetDoctor(int id);
 
         Task<string> AddDoctor(SomeKindOfDoctors request);
-        //Task<bool> EditDoctor(SomeKindOfDoctors request);
+        Task<string> EditDoctor(SomeKindOfDoctors request);
         Task<string> DeleteDoctor(int id);
     }
 }

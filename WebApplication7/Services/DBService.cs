@@ -42,6 +42,19 @@ namespace WebApplication7.Services
             return "Lekarz usunięty";
         }
 
+        public async Task<string> EditDoctor(SomeKindOfDoctors request)
+        {
+            var editDoctor = await _mainDbContext.Doctors.Where(e => e.IdDoctor == request.IdDoctor).FirstOrDefaultAsync();
+            editDoctor.FirstName = request.FirstName;
+            editDoctor.LastName = request.LastName;
+            editDoctor.Email = request.Email;
+                
+            _mainDbContext.Attach(editDoctor);
+            await _mainDbContext.SaveChangesAsync();
+            return "Doctor edytowany";
+
+        }
+
         public async Task<IEnumerable<SomeKindOfDoctors>> GetDoctor(int id)
         {
             return await _mainDbContext.Doctors

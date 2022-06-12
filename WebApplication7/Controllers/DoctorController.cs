@@ -24,6 +24,14 @@ namespace WebApplication7.Controllers
             return Ok(doctor);
         }
 
+        [HttpPut]
+        [Route("{id}")]
+        public async Task<IActionResult> EditDoctor(SomeKindOfDoctors someKindOfDoctor)
+        {
+            var doctor = await _idbservice.EditDoctor(someKindOfDoctor);
+            return Ok(doctor);
+        }
+
         [HttpGet]
         public async Task<IActionResult> GetDoctors()
         {
