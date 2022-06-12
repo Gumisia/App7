@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebApplication7.Models;
+using WebApplication7.Services;
 
 namespace WebApplication7
 {
@@ -28,6 +29,7 @@ namespace WebApplication7
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<MainDbContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("Default")));
+            services.AddScoped<IDbService, DBService>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
